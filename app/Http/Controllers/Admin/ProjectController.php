@@ -14,7 +14,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('admin.projects.index', ['projects' => Project::orderByDesc('id')->paginate(5)]);
+        $classColor = 'admin_bg';
+        $projects = Project::orderByDesc('id')->paginate(5);
+        return view('admin.projects.index', compact('projects', 'classColor'));
     }
 
     /**
@@ -38,7 +40,8 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('admin.projects.show', compact('project'));
+        $classColor = 'admin_bg';
+        return view('admin.projects.show', compact('project', 'classColor'));
     }
 
     /**

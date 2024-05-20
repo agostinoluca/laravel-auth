@@ -1,1 +1,9 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+.admin_bg {
+    background-image: url('../../public/admin_bg.jpg');
+    background-repeat: no-repeat;
+    background-position: left 20%;
+    background-position-x: 5%;
+    background-size: 5%;
+}

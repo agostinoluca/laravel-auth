@@ -15,11 +15,11 @@ class ProjectSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $project = new Project();
-            $project->title = $faker->words(4, true);
+            $project->title = $faker->words(3, true);
             $project->description = $faker->text(400);
-            $project->screenshot_site = $faker->imageUrl(640, 480, 'develop', true, 'Faker');
+            $project->screenshot_site = $faker->imageUrl(640, 480, 'Develop', true, 'of');
             $project->client_name = $faker->company;
             $project->budget = $faker->randomFloat(2, 50, 400);
             $project->url = $faker->url;
