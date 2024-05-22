@@ -27,7 +27,6 @@ class StoreProjectRequest extends FormRequest
             'client_name' => 'nullable|string|max:100',
             'budget' => 'nullable|numeric',
             'url' => 'nullable|url',
-            'slug' => 'unique'
         ];
     }
 }
