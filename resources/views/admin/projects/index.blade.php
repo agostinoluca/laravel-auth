@@ -2,22 +2,16 @@
 
 @section('content')
     <header class="bg-dark text-white py-4">
-
         <div class="container d-flex justify-content-between align-items-center">
             <h1>My Projects</h1>
             <a class="btn btn-primary" href="{{ route('admin.projects.create') }}">Add new project</a>
         </div>
-
     </header>
 
-
-
     <div class="container mt-5">
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
-        @endif
+
+        @include('partials.action_confirm')
+
         <div class="table-responsive">
             <table class="table table-primary">
                 <thead>
