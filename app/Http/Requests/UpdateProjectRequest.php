@@ -24,6 +24,7 @@ class UpdateProjectRequest extends FormRequest
         return [
             'title' => 'required|string|max:100',
             'description' => 'required|string',
+            'screenshot_site' => 'nullable|image|max:1000',
             'client_name' => 'nullable|string|max:100',
             'budget' => 'nullable|numeric',
             'url' => 'nullable|url',

@@ -9,5 +9,5 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'client_name', 'budget', 'url', 'slug'];
+    protected $fillable = ['title', 'description', 'screenshot_site', 'client_name', 'budget', 'url', 'slug'];
 }

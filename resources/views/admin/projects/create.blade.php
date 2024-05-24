@@ -14,40 +14,66 @@
 
     <div class="container mt-4">
         @include('partials.validation_errors')
-        <form action="{{ route('admin.projects.store') }}" method="post">
+        <form action="{{ route('admin.projects.store') }}" method="post" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
                 <label for="" class="form-label">Title</label>
                 <input type="text" class="form-control" name="title" id="title" aria-describedby="titleHelper"
-                    placeholder="" />
+                    placeholder="" value="{{ old('title') }}" />
                 <small id="titleHelper" class="form-text text-muted">Add the title of new Project here</small>
+                @error('title')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" name="description" id="description" rows="5"></textarea>
+                <textarea class="form-control" name="description" id="description" rows="5">{{ old('description') }}</textarea>
+                @error('description')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
+
+            <div class="mb-3">
+                <label for="screenshot_site" class="form-label">Upload the screenshot of the site</label>
+                <input type="file" class="form-control" name="screenshot_site" id="screenshot_site"
+                    aria-describedby="screenshotSiteHelper" placeholder="Screenshot of the site" />
+                <small id="screenshotSiteHelper" class="form-text text-muted">Upload an image</small>
+                @error('screenshot_site')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
 
             <div class="mb-3">
                 <label for="client_name" class="form-label">Client name</label>
                 <input type="text" class="form-control" name="client_name" id="client_name"
-                    aria-describedby="clientNameHelper" placeholder="" />
+                    aria-describedby="clientNameHelper" placeholder="" value="{{ old('client_name') }}" />
                 <small id="clientNameHelper" class="form-text text-muted">Who is your client?</small>
+                @error('client_name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="budget" class="form-label">Budget for the project</label>
                 <input type="number" step="0.01" class="form-control" name="budget" id="budget"
-                    aria-describedby="budgetHelper" placeholder="" />
+                    aria-describedby="budgetHelper" placeholder="" value="{{ old('budget') }}" />
                 <small id="budgetHelper" class="form-text text-muted">How is the budget in euro?</small>
+                @error('budget')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label for="url" class="form-label">Url</label>
                 <input type="text" class="form-control" name="url" id="url" aria-describedby="urlHelper"
-                    placeholder="" />
+                    placeholder="" value="{{ old('url') }}" />
                 <small id="urlHelper" class="form-text text-muted">Link of your site-project.</small>
+                @error('url')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
 
 

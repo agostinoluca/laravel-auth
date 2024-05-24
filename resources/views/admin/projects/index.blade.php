@@ -30,7 +30,16 @@
                     @forelse ($projects as $project)
                         <tr class="">
                             <td scope="row">{{ $project->id }}</td>
-                            <td><img class="rounded-3" width="150" src="{{ $project->screenshot_site }}" alt="">
+                            <td>
+                                @if (Str::startsWith($project->screenshot_site, 'https://'))
+                                    <img class="rounded-3" width="150" src="{{ $project->screenshot_site }}"
+                                        alt="Screenshot of the site/project" loading="lazy">
+                                @elseif (!$project->screenshot_site)
+                                    <div class="text-secondary">No image uploaded</div>
+                                @else
+                                    <img width="150" src="{{ asset('storage/' . $project->screenshot_site) }}"
+                                        alt="Screenshot of the site/project">
+                                @endif
                             </td>
                             <td>{{ $project->title }}</td>
                             <td>{{ $project->client_name }}</td>

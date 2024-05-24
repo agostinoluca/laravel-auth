@@ -14,7 +14,7 @@
 
     <div class="container mt-4">
         @include('partials.validation_errors')
-        <form action="{{ route('admin.projects.update', $project) }}" method="post">
+        <form action="{{ route('admin.projects.update', $project) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -28,6 +28,24 @@
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" name="description" id="description" rows="5">{{ old('description', $project->description) }}</textarea>
+            </div>
+
+            <div class="d-flex gap-5 align-items-center py-4">
+                @if (Str::startsWith($project->screenshot_site, 'https://'))
+                    <img class="rounded-3" width="150" src="{{ $project->screenshot_site }}"
+                        alt="Screenshot of the site/project" loading="lazy">
+                @elseif (!$project->screenshot_site)
+                    <div class="text-secondary">No images previously uploaded.</div>
+                @else
+                    <img width="150" src="{{ asset('storage/' . $project->screenshot_site) }}"
+                        alt="Screenshot of the site/project">
+                @endif
+                <div class="mb-3">
+                    <label for="screenshot_site" class="form-label">Change the screenshot of the site</label>
+                    <input type="file" class="form-control" name="screenshot_site" id="screenshot_site"
+                        aria-describedby="screenshotSiteHelper" placeholder="Screenshot of the site" />
+                    <small id="screenshotSiteHelper" class="form-text text-muted">Upload an image</small>
+                </div>
             </div>
 
             <div class="mb-3">
