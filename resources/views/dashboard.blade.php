@@ -27,6 +27,9 @@
                 <span class="fs-3">What do you want to do?</span>
             </div>
             <div class="card-body p-5 d-flex justify-content-evenly">
+                <a class="btn btn-lg border btn-transparent" href="{{ url('/') }}"><i
+                        class="fa-solid fa-house text-primary"></i>
+                    Public home page</a>
                 <a class="btn btn-lg border btn-transparent" href="{{ route('admin.projects.create') }}"><i
                         class="fa fa-plus-circle text-success" aria-hidden="true"></i> Add a new
                     project</a>
