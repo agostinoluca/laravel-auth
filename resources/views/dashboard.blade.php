@@ -22,5 +22,19 @@
                 </div>
             </div>
         </div>
+        <div class="card mt-5">
+            <div class="card-header text-center">
+                <span class="fs-3">What do you want to do?</span>
+            </div>
+            <div class="card-body p-5 d-flex justify-content-evenly">
+                <a class="btn btn-lg border btn-transparent" href="{{ route('admin.projects.create') }}"><i
+                        class="fa fa-plus-circle text-success" aria-hidden="true"></i> Add a new
+                    project</a>
+                <a class="btn btn-lg border btn-transparent" href="{{ route('admin.projects.index') }}"><i
+                        class="fa fa-pencil text-secondary" aria-hidden="true"></i> Manage existing
+                    projects</a>
+            </div>
+
+        </div>
     </div>
 @endsection
