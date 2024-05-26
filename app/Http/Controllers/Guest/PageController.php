@@ -10,7 +10,7 @@ class PageController extends Controller
 {
     public function index()
     {
-        $latest_projects = Project::orderByDesc('id')->take(4)->get();
+        $latest_projects = Project::orderByDesc('id')->take(8)->get();
         return view('welcome', compact('latest_projects'));
     }
 }

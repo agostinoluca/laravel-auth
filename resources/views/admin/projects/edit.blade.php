@@ -71,7 +71,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-success">
                 Edit
             </button>
 

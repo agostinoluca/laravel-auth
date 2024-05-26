@@ -9,14 +9,14 @@
         </div>
 
         <div class="pb-5 d-flex">
-            <img src="{{ $project->screenshot_site }}" alt="">
+            @include('partials.screenshot_site')
             <div>
                 <div class="bg-secondary text-light p-2">Description:</div>
                 <p class="p-5">{{ $project->description }}</p>
             </div>
         </div>
 
-        <div class="bg-dark text-light rounded-3 p-4 d-flex flex-column gap-2">
+        <div class="bg-secondary text-light rounded-3 p-4 d-flex flex-column gap-2">
 
             <div>
                 Client: {{ $project->client_name }}
