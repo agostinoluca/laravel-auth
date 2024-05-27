@@ -33,8 +33,9 @@
             </div>
         </div>
         <div class="pt-3 text-start">
-            <a name="" id="" class="btn btn-secondary" href="{{ route('admin.projects.index') }}"
-                role="button"><i class="fa-solid fa-angles-left"></i> Go Back</a>
+            <a name="" id="" class="btn btn-transparent border border-3 border-secondary"
+                href="{{ route('admin.projects.index') }}" role="button"><i class="fa-solid fa-angles-left"></i> Go
+                Back</a>
         </div>
 
     </div>

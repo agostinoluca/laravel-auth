@@ -77,8 +77,8 @@
             </div>
 
 
-            <button type="submit" class="btn btn-primary">
-                Add Project
+            <button type="submit" class="btn btn-transparent border border-3 border-success">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i> Add Project
             </button>
 
 

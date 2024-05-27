@@ -71,8 +71,8 @@
             </div>
 
 
-            <button type="submit" class="btn btn-success">
-                Edit
+            <button type="submit" class="btn btn-transparent border border-3 border-success">
+                <i class="fa fa-pencil" aria-hidden="true"></i> Edit
             </button>
 
 
