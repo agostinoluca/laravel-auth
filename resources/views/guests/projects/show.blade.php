@@ -3,10 +3,18 @@
 
 @section('content')
     <div class="jumbotron p-5 mb-4 bg-secondary">
-        <div class="container py-5">
+        <div class="container py-5 d-flex justify-content-between align-items-center">
             <h1 class="display-5 fw-bold text-light">
                 {{ $project->title }}
             </h1>
+            <div class="d-flex justify-content-center gap-2">
+                <a class="btn btn-transparent border border-2 py-3 text-light" href="{{ url('/') }}" role="button"><i
+                        class="fa fa-home" aria-hidden="true"></i>
+                    Homepage</a>
+                <a class="btn btn-transparent border border-2 py-3 text-light" href="{{ url('/projects') }}"
+                    role="button"><i class="fa-solid fa-layer-group"></i> All
+                    Projects</a>
+            </div>
         </div>
     </div>
 
@@ -39,11 +47,5 @@
                 <p class="p-5">{{ $project->description }}</p>
             </div>
         </div>
-
-        <div class="pt-3 text-start">
-            <a name="" id="" class="btn btn-secondary" href="{{ url('/') }}" role="button"><i
-                    class="fa-solid fa-angles-left"></i> Go Back</a>
-        </div>
-
     </div>
 @endsection
