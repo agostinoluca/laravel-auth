@@ -30,10 +30,6 @@
                 </div>
 
                 <div>
-                    Budget: {{ $project->budget }}€
-                </div>
-
-                <div>
 
                     URL site: <a href="#">{{ $project->url }}</a>
 
