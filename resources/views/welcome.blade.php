@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="text-center p-5 mb-4 bg-secondary">
-        <img class="img-fluid mx-auto d-block" src="{{ asset('images/projects.png') }}" alt="">
+        <a href="{{ route('projects.index') }}">
+            <img class="img-fluid mx-auto d-block" src="{{ asset('images/projects.png') }}" alt="">
+        </a>
     </div>
 
     <section class="latest_projects">
