@@ -20,6 +20,12 @@
                         <th scope="col">ID</th>
                         <th scope="col">Screenshot Site</th>
                         <th scope="col">Title</th>
+                        <th scope="col">Type
+                            <a href="{{ route('admin.types.index') }}">
+                                <i class="fa fa-plus-circle text-secondary" aria-hidden="true"></i>
+                                <i class="fa fa-pencil text-secondary" aria-hidden="true"></i>
+                            </a>
+                        </th>
                         <th scope="col">Client Name</th>
                         <th scope="col">Budget</th>
                         <th scope="col">Slug</th>
@@ -35,6 +41,7 @@
                                 @include('partials.screenshot_site')
                             </td>
                             <td>{{ $project->title }}</td>
+                            <td>{{ $project->type ? $project->type->name : 'N/A' }}</td>
                             <td>{{ $project->client_name }}</td>
                             <td>{{ $project->budget }}€</td>
                             <td>{{ $project->slug }}</td>

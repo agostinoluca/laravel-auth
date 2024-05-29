@@ -10,9 +10,15 @@
 
         <div class="pb-5 d-flex">
             @include('partials.screenshot_site')
-            <div>
-                <div class="bg-secondary text-light p-2">Description:</div>
-                <p class="p-5">{{ $project->description }}</p>
+            <div class="d-flex flex-column px-3">
+                <div>
+                    <div class="bg-secondary text-light p-2 rounded-2">Description:</div>
+                    <p class="p-5">{{ $project->description }}</p>
+                </div>
+                @if ($project->type)
+                    <div class="bg-secondary text-light p-2 rounded-2">Project type</div>
+                    <div class="pt-3 fw-medium">{{ $project->type->name }}</div>
+                @endif
             </div>
         </div>
 

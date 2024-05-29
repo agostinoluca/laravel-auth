@@ -24,21 +24,26 @@
                 @include('partials.screenshot_site')
             </div>
 
-            <div>
+            <div class="d-flex flex-column gap-3 text-start">
+                @if ($project->type)
+                    <div>
+                        Project Type: <span class="badge bg-success bg-opacity-75 px-2">{{ $project->type->name }}</span>
+                    </div>
+                @endif
+
                 <div>
                     Client: {{ $project->client_name }}
                 </div>
 
                 <div>
-
                     URL site: <a href="#">{{ $project->url }}</a>
-
                 </div>
+
             </div>
         </div>
 
         <div class="d-flex pt-4">
-            <div class="border rounded-3">
+            <div class="border rounded-3 w-100">
                 <div class="bg-secondary fs-1 lead text-light p-1 rounded-top-3">Description:</div>
                 <p class="p-5">{{ $project->description }}</p>
             </div>
