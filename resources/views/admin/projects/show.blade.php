@@ -15,9 +15,25 @@
                     <div class="bg-secondary text-light p-2 rounded-2">Description:</div>
                     <p class="p-5">{{ $project->description }}</p>
                 </div>
+
+
                 @if ($project->type)
                     <div class="bg-secondary text-light p-2 rounded-2">Project type</div>
                     <div class="pt-3 fw-medium">{{ $project->type->name }}</div>
+                @endif
+
+
+                @if ($project->technologies->isNotEmpty())
+                    <div class="bg-secondary text-light p-2 rounded-2 mt-3">Used technologies</div>
+                    <div class="pt-3 fw-medium">
+                        @foreach ($project->technologies as $tech)
+                            <span class="d-flex p-2 justify-content-center">
+                                <span class="badge bg-primary bg-opacity-75">
+                                    {{ $tech->name }}
+                                </span>
+                            </span>
+                        @endforeach
+                    </div>
                 @endif
             </div>
         </div>

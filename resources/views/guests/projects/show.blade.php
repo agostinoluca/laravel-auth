@@ -27,20 +27,52 @@
             <div class="d-flex flex-column gap-3 text-start">
                 @if ($project->type)
                     <div>
-                        Project Type: <span class="badge bg-success bg-opacity-75 px-2">{{ $project->type->name }}</span>
+                        <span class="lead">Project Type: </span>{{ $project->type->name }}
+                    </div>
+                @else
+                    <div>
+                        <span class="lead">Project Type: </span>N/A
                     </div>
                 @endif
 
-                <div>
-                    Client: {{ $project->client_name }}
-                </div>
 
-                <div>
-                    URL site: <a href="#">{{ $project->url }}</a>
-                </div>
+                @if ($project->client_name)
+                    <div>
+                        <span class="lead">Client: </span>{{ $project->client_name }}
+                    </div>
+                @else
+                    <div>
+                        <span class="lead">Client: </span>N/A
+                    </div>
+                @endif
+
+                @if ($project->url)
+                    <div>
+                        <span class="lead">URL site: </span><a href="#">{{ $project->url }}</a>
+                    </div>
+                @else
+                    <div>
+                        <span class="lead">URL site: </span>N/A
+                    </div>
+                @endif
 
             </div>
         </div>
+
+        @if ($project->technologies->isNotEmpty())
+            <div class="d-flex justify-content-center align-items-center pt-4">
+                <span class="lead">
+                    Project Technologies:
+                </span>
+                @foreach ($project->technologies as $tech)
+                    <span class="d-flex px-1">
+                        <span class="badge bg-primary bg-opacity-75">
+                            {{ $tech->name }}
+                        </span>
+                    </span>
+                @endforeach
+            </div>
+        @endif
 
         <div class="d-flex pt-4">
             <div class="border rounded-3 w-100">
