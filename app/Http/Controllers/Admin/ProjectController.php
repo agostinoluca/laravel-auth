@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Technology;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\Type;
@@ -18,7 +19,8 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::orderByDesc('id')->paginate(5);
-        return view('admin.projects.index', compact('projects'));
+        $technologies = Technology::all();
+        return view('admin.projects.index', compact('projects', 'technologies'));
     }
 
     /**
@@ -27,7 +29,8 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        $technologies = Technology::all();
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -35,6 +38,7 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+
         $val_data = $request->validated();
 
         $val_data['slug'] = Str::slug($request->title, '-');
@@ -47,7 +51,11 @@ class ProjectController extends Controller
         }
 
 
-        Project::create($val_data);
+        $project = Project::create($val_data);
+
+        if ($request->has('technologies')) {
+            $project->technologies()->attach($val_data['technologies']);
+        }
 
         return to_route('admin.projects.index')->with('status', 'The new project has been inserted.');
     }
@@ -66,7 +74,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -90,6 +99,10 @@ class ProjectController extends Controller
 
         $project->update($val_data);
 
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($val_data['technologies']);
+        }
+
         return to_route('admin.projects.index')->with('status', 'The project was successfully modified!');
     }
 
@@ -103,6 +116,9 @@ class ProjectController extends Controller
         if ($project->screenshot_site) {
             Storage::delete($project->screenshot_site);
         }
+
+        // non è necessario utilizzare $project->technologies()->detach();
+        // in quanto abbiamo utilizzato nella tabella pivot project_technology il cascadeOnDelete()
 
         return to_route('admin.projects.index')->with('status', 'The project was successfully deleted!');
     }

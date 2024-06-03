@@ -26,7 +26,8 @@
                                 <i class="fa fa-pencil text-secondary" aria-hidden="true"></i>
                             </a>
                         </th>
-                        <th scope="col">Client Name</th>
+                        <th scope="col">Technologies</th>
+                        <th scope="col">Client</th>
                         <th scope="col">Budget</th>
                         <th scope="col">Slug</th>
                         <th scope="col">Url</th>
@@ -35,17 +36,28 @@
                 </thead>
                 <tbody>
                     @forelse ($projects as $project)
-                        <tr class="">
+                        <tr>
                             <td scope="row">{{ $project->id }}</td>
                             <td>
                                 @include('partials.screenshot_site')
                             </td>
                             <td>{{ $project->title }}</td>
                             <td>{{ $project->type ? $project->type->name : 'N/A' }}</td>
-                            <td>{{ $project->client_name }}</td>
-                            <td>{{ $project->budget }}€</td>
+                            <td>
+                                @forelse ($project->technologies as $tech)
+                                    <span class="d-flex p-1 flex-column">
+                                        <span class="badge border text-dark">
+                                            {{ $tech->name }}
+                                        </span>
+                                    </span>
+                                @empty
+                                    N/A
+                                @endforelse
+                            </td>
+                            <td>{{ $project->client_name }}{{ $project->client_name ? '' : 'N/A' }}</td>
+                            <td>{{ $project->budget }}{{ $project->budget ? '€' : 'N/A' }}</td>
                             <td>{{ $project->slug }}</td>
-                            <td>{{ $project->url }}</td>
+                            <td>{{ $project->url }}{{ $project->url ? '' : 'N/A' }}</td>
                             <td style="white-space: nowrap;">
 
                                 <a class="btn btn-sm btn-primary" href="{{ route('admin.projects.show', $project) }}"><i
