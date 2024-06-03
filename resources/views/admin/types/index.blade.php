@@ -7,7 +7,7 @@
         @include('partials.validation_errors')
 
         <div class="row">
-            <div class="col-5">
+            <div class="col-5 d-flex flex-column justify-content-between">
 
                 <form action="{{ route('admin.types.store') }}" method="post">
                     @csrf
@@ -19,6 +19,12 @@
                     </div>
 
                 </form>
+
+                <div class="text-start">
+                    <a class="btn btn-transparent border border-3 border-secondary"
+                        href="{{ route('admin.projects.index') }}" role="button"><i class="fa-solid fa-angles-left"></i> Go
+                        Back</a>
+                </div>
 
 
             </div>

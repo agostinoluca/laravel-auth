@@ -74,7 +74,7 @@
             </div>
         @endif
 
-        <div class="d-flex pt-4">
+        <div class="d-flex py-4">
             <div class="border rounded-3 w-100">
                 <div class="bg-secondary fs-1 lead text-light p-1 rounded-top-3">Description:</div>
                 <p class="p-5">{{ $project->description }}</p>
