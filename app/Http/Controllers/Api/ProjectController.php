@@ -10,8 +10,12 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        return Project::all();
+        return response()->json([
+            'success' => 'true',
+            'results' => Project::with(['type', 'technologies'])->get(),
+        ]);
     }
+
 
 
     public function show($id)
