@@ -12,4 +12,22 @@ class ProjectController extends Controller
     {
         return Project::all();
     }
+
+
+    public function show($id)
+    {
+        $project = Project::with(['type', 'technologies'])->where('id', $id)->first();
+        if ($project) {
+            return response()->json([
+                'success' => true,
+                'results' => $project
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'results' => '404 not found'
+
+            ]);
+        }
+    }
 }
