@@ -66,15 +66,7 @@
             </div>
 
             <div class="d-flex gap-5 align-items-center py-4">
-                @if (Str::startsWith($project->screenshot_site, 'https://'))
-                    <img class="rounded-3" width="150" src="{{ $project->screenshot_site }}"
-                        alt="Screenshot of the site/project" loading="lazy">
-                @elseif (!$project->screenshot_site)
-                    <div class="text-secondary">No images previously uploaded.</div>
-                @else
-                    <img width="150" src="{{ asset('storage/' . $project->screenshot_site) }}"
-                        alt="Screenshot of the site/project">
-                @endif
+                @include('partials.screenshot_site', ['width' => '200px', 'aspectRatio' => '16/9'])
                 <div class="mb-3">
                     <label for="screenshot_site" class="form-label">Change the screenshot of the site</label>
                     <input type="file" class="form-control" name="screenshot_site" id="screenshot_site"
