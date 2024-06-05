@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Api\ProjectController;
+use App\Http\Controllers\Api\TypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Project;
+use App\Models\Type;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +22,7 @@ use App\Models\Project;
 //     return $request->user();
 // });
 
-Route::get('projects', [ProjectController::class, 'index']);
-Route::get('projects/{project}', [ProjectController::class, 'show']);
+Route::get('/projects', [ProjectController::class, 'index']);
+Route::get('/projects/{project}', [ProjectController::class, 'show']);
+
+Route::get('/types', [TypeController::class, 'index']);
