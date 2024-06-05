@@ -39,7 +39,10 @@
                         <tr>
                             <td scope="row">{{ $project->id }}</td>
                             <td>
-                                @include('partials.screenshot_site')
+                                @include('partials.screenshot_site', [
+                                    'width' => '200px',
+                                    'aspectRatio' => '16/9',
+                                ])
                             </td>
                             <td>{{ $project->title }}</td>
                             <td>{{ $project->type ? $project->type->name : 'N/A' }}</td>

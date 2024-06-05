@@ -21,7 +21,7 @@
     <div class="container text-center">
         <div class="rounded-3 d-flex justify-content-evenly align-items-center gap-2">
             <div>
-                @include('partials.screenshot_site')
+                @include('partials.screenshot_site', ['width' => '80%', 'aspectRatio' => '16/9'])
             </div>
 
             <div class="d-flex flex-column gap-3 text-start">

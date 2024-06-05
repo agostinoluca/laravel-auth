@@ -12,7 +12,7 @@
     </header>
 
 
-    <div class="container mt-4">
+    <div class="container my-4">
         @include('partials.validation_errors')
         <form action="{{ route('admin.projects.store') }}" method="post" enctype="multipart/form-data">
             @csrf

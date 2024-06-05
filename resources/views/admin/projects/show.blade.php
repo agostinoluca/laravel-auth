@@ -8,27 +8,30 @@
             <h2 class="text-uppercase border border-1 p-3">{{ $project->title }}</h2>
         </div>
 
-        <div class="pb-5 d-flex">
-            @include('partials.screenshot_site')
+        <div>
+            @include('partials.screenshot_site', ['width' => '60%', 'aspectRatio' => '16/9'])
+        </div>
+
+        <div class="py-4 row">
             <div class="d-flex flex-column px-3">
                 <div>
                     <div class="bg-secondary text-light p-2 rounded-2">Description:</div>
-                    <p class="p-5">{{ $project->description }}</p>
+                    <p class="px-5 py-3">{{ $project->description }}</p>
                 </div>
 
 
                 @if ($project->type)
                     <div class="bg-secondary text-light p-2 rounded-2">Project type</div>
-                    <div class="pt-3 fw-medium">{{ $project->type->name }}</div>
+                    <div class="py-3 fw-medium">{{ $project->type->name }}</div>
                 @endif
 
 
                 @if ($project->technologies->isNotEmpty())
                     <div class="bg-secondary text-light p-2 rounded-2 mt-3">Used technologies</div>
-                    <div class="pt-3 fw-medium">
+                    <div class="py-3">
                         @foreach ($project->technologies as $tech)
-                            <span class="d-flex p-2 justify-content-center">
-                                <span class="badge bg-primary bg-opacity-75">
+                            <span class="p-2 justify-content-center">
+                                <span class="lead p-1 px-2 rounded-2 bg-primary bg-opacity-50">
                                     {{ $tech->name }}
                                 </span>
                             </span>
@@ -38,19 +41,32 @@
             </div>
         </div>
 
-        <div class="bg-secondary text-light rounded-3 p-4 d-flex flex-column gap-2">
+        <div class="bg-secondary text-light rounded-3 d-flex flex-column gap-2 p-2">
 
             <div>
-                Client: {{ $project->client_name }}
+                Client: {{ $project->client_name ?? 'N/A' }}
             </div>
 
             <div>
-                Budget: {{ $project->budget }}€
+                @if ($project->budget)
+                    Budget: {{ $project->budget }}€
+                @else
+                    Budget: N/A
+                @endif
+
             </div>
 
             <div>
 
-                URL site: <a href="#">{{ $project->url }}</a>
+                @if ($project->url)
+                    <div>
+                        <span>URL site: </span><a href="#">{{ $project->url }}</a>
+                    </div>
+                @else
+                    <div>
+                        <span>URL site: </span>N/A
+                    </div>
+                @endif
 
             </div>
         </div>
