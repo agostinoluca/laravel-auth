@@ -8,8 +8,17 @@ use App\Models\Project;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+
+        if ($request->has('search')) {
+            return response()->json([
+                'success' => 'true',
+                'results' => Project::with(['type', 'technologies'])->where('title', 'like', '%' . $request->search . '%')->get(),
+            ]);
+        }
+
+
         return response()->json([
             'success' => 'true',
             'results' => Project::with(['type', 'technologies'])->get(),
