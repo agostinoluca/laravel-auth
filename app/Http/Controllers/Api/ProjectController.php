@@ -14,14 +14,14 @@ class ProjectController extends Controller
         if ($request->has('search')) {
             return response()->json([
                 'success' => 'true',
-                'results' => Project::with(['type', 'technologies'])->where('title', 'like', '%' . $request->search . '%')->get(),
+                'results' => Project::with(['type', 'technologies'])->where('title', 'like', '%' . $request->search . '%')->paginate(6),
             ]);
         }
 
 
         return response()->json([
             'success' => 'true',
-            'results' => Project::with(['type', 'technologies'])->get(),
+            'results' => Project::with(['type', 'technologies'])->paginate(6),
         ]);
     }
 
